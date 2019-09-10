@@ -9,9 +9,7 @@ KREWES = {'orpheus':['Emily', 'Kevin', 'Vishwaa', 'Eric', 'ray', 'Jesse', 'Tiffa
           'Lauren', 'Biraj', 'Jeff', 'Jackson', 'Taejoon', 'Kevin', 'Jude', 'Sophie', 'Henry', 'Coby', 'Manfred', 'Leia', 'Ahmed', 'Winston']}
 
 def function(dict):
-    teams = list()
-    for a in dict.keys():
-        teams.append(a)
+    teams = list(dict.keys())
     team = rand.choice(teams)
     print(rand.choice(dict[team]))
 
