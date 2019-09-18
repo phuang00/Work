@@ -13,8 +13,8 @@ def hi():
 
 @app.route("/world")
 def earth():
-    print("__world")
-    return "Welcome to this wonderful world!"
+    print("__world__")
+    return "Welcome to this wonderful world!!!"
 
 if __name__ == "__main__":
     app.debug = True
