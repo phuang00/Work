@@ -9,12 +9,12 @@ def hello_world():
 @app.route("/hello")
 def hi():
     print("__hi__")
-    return "Hola!"
+    return "Hola! Como estas?"
 
 @app.route("/world")
 def earth():
     print("__world")
-    return "Como estas?"
+    return "Welcome to this wonderful world!"
 
 if __name__ == "__main__":
     app.debug = True
