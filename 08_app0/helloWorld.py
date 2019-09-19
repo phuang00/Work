@@ -1,3 +1,8 @@
+#Peihua Huang
+#SoftDev1 pd2
+#K08 -- First Flask App
+#2019-09-18 
+
 from flask import Flask
 app = Flask(__name__) #create instance of class Flask
 
