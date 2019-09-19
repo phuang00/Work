@@ -1,3 +1,8 @@
+#Peihua Huang
+#SoftDev1 pd2
+#K03 -- CSV files and dictionary
+#2019-09-14
+
 import random as rand
 ##import random library
 

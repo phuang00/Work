@@ -1,3 +1,8 @@
+#Peihua Huang
+#SoftDev1 pd2
+#K02 -- Randomly select student
+#2019-09-11
+
 import random as rand
 
 KREWES = {
