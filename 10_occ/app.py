@@ -10,7 +10,7 @@ app = Flask(__name__) #create instance of class Flask
 @app.route("/") #assign following fxn to run when root route requested
 def hello_world():
     print(__name__) #where will this go?
-    return "No hablo queso!"
+    return "Please go to /occupyflaskst"
 
 @app.route("/occupyflaskst")
 def template():
