@@ -1,6 +1,6 @@
 #Peihua Huang
 #SoftDev1 pd2
-#K -- Static folder and templates
+#K09 -- Static folder and templates
 #2019-09-19
 
 from flask import Flask, render_template
