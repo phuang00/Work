@@ -19,7 +19,9 @@ def template():
         csv_reader = csv.reader(file, delimiter = ',')
         for row in csv_reader:
             dict[row[0]] = row[1]
-    return render_template('template.html', title = "Occupation Data")
+    del(dict["Job Class"])
+    del(dict["Total"])
+    return render_template('template.html', title = "Occupation Data", heading = "Occupations and their Statistics", dict = dict.items())
 
 
 if __name__ == "__main__":
