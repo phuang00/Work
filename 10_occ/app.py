@@ -17,11 +17,12 @@ def template():
     dict = {}
     with open('data/occupations.csv') as file:
         csv_reader = csv.reader(file, delimiter = ',')
+        next(csv_reader, None)
         for row in csv_reader:
-            dict[row[0]] = row[1]
-    del(dict["Job Class"])
+            dict[row[0]] = float(row[1])
     del(dict["Total"])
-    return render_template('template.html', title = "Occupation Data", heading = "Occupations and their Statistics", dict = dict.items())
+    job = random.choices(list(dict.keys()), list(dict.values()))
+    return render_template('template.html', title = "Occupation Data", heading = "Occupations and their Statistics", jobs = "Job Class", percent = "Percentage", team = " Team Cereal Before Milk: Peihua Huang, David Lupea", dict = dict.items(), rand_job = job[0])
 
 
 if __name__ == "__main__":
