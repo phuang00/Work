@@ -15,7 +15,7 @@ coll = [0, 1, 1, 2, 3, 5, 8]
 
 @app.route("/my_foist_template")
 def template():
-    return render_template('my_foist_template.HTML', foo = "fooooo", collection=coll)
+    return render_template('my_foist_template.html', foo = "fooooo", collection=coll)
 
 
 if __name__ == "__main__":
