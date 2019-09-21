@@ -29,7 +29,7 @@ def template():
     del(dict["Total"])
     # delete the last row that sums up the percentage
     job = random.choices(list(dict.keys()), list(dict.values())) # choose a job randomly based on weighted percentages
-    return render_template('template.html', title = "Occupation Data", heading = "Occupations and their Statistics", jobs = "Job Class", percent = "Percentage", team = " Team Cereal Before Milk: Peihua Huang, David Lupea", dict = dict.items(), rand_job = job[0])
+    return render_template('template.html', title = "Occupation Data", heading = "Occupations and their Statistics", head2 = "We used python to convert the csv file into a dictionary and choose a random job, and used Flask, html, and jinja to display the random job and the jobs and their percentages as a table on a webpage", jobs = "Job Class", percent = "Percentage", team = " Team Cereal Before Milk: Peihua Huang, David Lupea", dict = dict.items(), rand_job = job[0])
     # render template and insert variables in accordingly
 
 if __name__ == "__main__":
