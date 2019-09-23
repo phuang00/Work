@@ -28,12 +28,9 @@ def template():
             # for every row in the file, add job and percentage to dictionary as a key and value pair
     del(dict["Total"])
     # delete the last row that sums up the percentage
-    job = random.choices(list(dict.keys()), list(dict.values()))
-    # choose a job randomly from the list of dictionary keys by using random.choices
-    # the function takes in the list of keys (job) and the value (percentages of the job) in the same order,
-    # so that the key value pairs correspond
-    # the list of keys is taken in as the whole population that we're choosing from and the values are taken in
-    # as the relative weights, and the choice would be made according to those relative weights
+    job = random.choices(list(dict.keys()), weights = list(dict.values()))
+    # the built-in function random.choices takes in the list of keys (job) and the value (percentages of the job) in the same order,
+    # and randomly chooses one job based on the given weights of the jobs.
     return render_template('template.html', title = "Occupation Data", heading = "Occupations and their Statistics", head2 = "We used python to convert the csv file into a dictionary and choose a random job, and used Flask, html, and jinja to display the random job and the jobs and their percentages as a table on a webpage", jobs = "Job Class", percent = "Percentage", team = " Team Cereal Before Milk: Peihua Huang, David Lupea", dict = dict.items(), rand_job = job[0])
     # render template and insert the title, heading, dictionary, and random job in accordingly
 
