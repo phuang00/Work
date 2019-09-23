@@ -1,20 +1,32 @@
 <!DOCTYPE html>
 <html>
 	<head>
+		{# insert title and headings from python file
+			#}
 		<title>{{title}}</title>
     <h1>{{heading}}</h1>
 		<h2>{{head2}}</h2>
 	</head>
 	<body>
+		{# insert team name and roster
+			#}
     {{team}}
     <br>
+		{# display randomly chosen job on webpage
+			#}
     <p>Random job: {{rand_job}}</p>
     <br>
+		{# make a table
+			#}
     <table>
       <tr>
+				{# set table headings to Job Class and Percentages
+					#}
         <th>{{jobs}}</th>
         <th>{{percent}}</th>
       </tr>
+			{# for every job(key) and its corresponding weight(value), insert it into a row on the table
+				#}
       {% for key,value in dict %}
         <tr>
           <td>{{key}}</td>
