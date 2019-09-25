@@ -6,10 +6,6 @@ app = Flask(__name__)
 @app.route("/")
 def root():
     print(app)
-    return ""
-
-@app.route("/foo.html")
-def hello_world():
     return render_template("foo.html")
 
 @app.route("/auth")
