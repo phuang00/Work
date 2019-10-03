@@ -20,6 +20,7 @@ app.secret_key = os.urandom(32)
 
 @app.route("/")
 def root():
+    #print(url_for("login"))
     if ("loggedIn" in session):
         return redirect(url_for("welcome"))
     else:
@@ -39,7 +40,9 @@ def authenticate():
 
 @app.route("/welcome")
 def welcome():
-    return render_template("welcome.html")
+    if ("loggedIn" in session):
+        return render_template("welcome.html")
+    return redirect(url_for("login"))
 
 @app.route("/login")
 def login():
