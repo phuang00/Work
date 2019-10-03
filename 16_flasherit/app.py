@@ -1,4 +1,4 @@
-#Peihua Huang
+#Peihua Huang and Matthew Chan (Apples Bananas)
 #SoftDev1 pd2
 #K16 -- Flashing and Template Inheritance
 #2019-10-03
