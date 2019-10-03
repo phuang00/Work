@@ -1,0 +1,12 @@
+{% extends "template.html"%}
+
+{% block title %}
+Error
+{% endblock %}
+
+{% block content %}
+Error: {{rsn}}, please try again
+<form action="/logout">
+	<input type="submit" name="sub" value="Return to Login">
+</form>
+{% endblock %}
