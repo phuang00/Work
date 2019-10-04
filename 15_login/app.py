@@ -37,8 +37,8 @@ def authenticate():
     if (usr == request.args['username']):
         if (pwd == request.args['password']):
             # if both the username and password are correct
-            session["loggedIn"] = True
-            # start a session
+            session["loggedIn"] = usr
+            # start a session and store username
             return redirect(url_for("welcome"))
             # redirect to welcome page
         else:
