@@ -9,6 +9,7 @@ from flask import request
 from flask import redirect
 from flask import url_for
 from flask import session
+from flask import flash
 import os
 # imported Flask, render_template, and request
 app = Flask(__name__)
@@ -43,12 +44,14 @@ def authenticate():
             # redirect to welcome page
         else:
             # if password is incorrect
-            return render_template("error.html", rsn = "incorrect password")
-            # render error page and error message
+            flash("incorrect password")
+            return render_template("error.html")
+            # render error page and flash error message
     else:
         # if username is incorrect
-        return render_template("error.html", rsn = "incorrect username")
-        # render error page and error message
+        flash("incorrect username")
+        return render_template("error.html")
+        # render error page and flash error message
     return render_template("error.html", rsn = "bad juju")
     #if it fails for any othe reason, return error page and error message
 
