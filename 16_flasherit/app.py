@@ -52,7 +52,8 @@ def authenticate():
         flash("incorrect username")
         return render_template("error.html")
         # render error page and flash error message
-    return render_template("error.html", rsn = "bad juju")
+    flash("bad juju")
+    return render_template("error.html")
     #if it fails for any othe reason, return error page and error message
 
 @app.route("/welcome")
