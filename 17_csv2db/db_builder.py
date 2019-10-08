@@ -1,4 +1,4 @@
-#Peihua Huang 
+#Peihua Huang, Hannah Fried
 #SoftDev1 pd2
 #K17 -- SQLITE3 BASICS
 #2019-10-07
