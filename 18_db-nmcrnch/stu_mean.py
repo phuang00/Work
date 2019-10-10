@@ -1,5 +1,6 @@
 # Team Name: PeiCow
-
+# Peihua Huang, William Cao
+#
 # 2019-10-10
 
 import sqlite3   #enable control of an sqlite database
@@ -23,23 +24,33 @@ def put_data_in(file_path: str, table_name):
         reader = csv.DictReader(csv_file)
         for row in reader:
             values = list(row.values())
-            db.execute("INSERT INTO {} VALUES ('{}', {}, {});".format(table_name, *values))
+            c.execute("INSERT INTO {} VALUES ('{}', {}, {});".format(table_name, *values))
 
 
-db.execute("CREATE TABLE IF NOT EXISTS students (name STRING, age INTERGER, id INTERGER PRIMARY KEY);")
+c.execute("CREATE TABLE IF NOT EXISTS students (name STRING, age INTERGER, id INTERGER PRIMARY KEY);")
 put_data_in("./data/students.csv", "students")
-db.execute("CREATE TABLE IF NOT EXISTS courses (code STRING, mark INTERGER, id INTERGER);")
+c.execute("CREATE TABLE IF NOT EXISTS courses (code STRING, mark INTERGER, id INTERGER);")
 put_data_in("./data/courses.csv", "courses")
 
-query = """
-select name, students.id, mark
-from students, courses
-where students.id = courses.id;
-"""
+c.execute("CREATE TABLE IF NOT EXISTS stu_avg (name STRING, id INTEGER, ave INTEGER);")
 
+query = """
+SELECT name, students.id, mark
+FROM students, courses
+WHERE students.id = courses.id;
+"""
 result = c.execute(query)
-for i in result:
-    print(i)
+
+dict = {}
+
+for name, id, mark in result:
+    if (name not in dict):
+        dict[name] = [int(id), int(mark), 1]
+    else:
+        dict[name] = [dict[name][0], dict[name][1] + int(mark), dict[name][2] + 1]
+
+for row in dict:
+    c.execute("INSERT INTO stu_avg VALUES(\"{}\", {}, {});".format(row, dict[row][0], dict[row][1]/dict[row][2]))
 
 db.commit() #save changes
 db.close()  #close database
