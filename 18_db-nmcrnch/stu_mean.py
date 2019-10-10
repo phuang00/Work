@@ -1,6 +1,6 @@
-# Team Name: PeiCow
-# Peihua Huang, William Cao
-#
+# Peihua Huang, William Cao (Team Name: PeiCow)
+# SoftDev1 pd2
+#K18 - Average
 # 2019-10-10
 
 import sqlite3   #enable control of an sqlite database
@@ -12,6 +12,9 @@ DB_FILE="discobandit.db"
 db = sqlite3.connect(DB_FILE) #open if file exists, otherwise create
 c = db.cursor()               #facilitate db ops
 
+course_code = input("Enter course code: ")
+course_mark = input("Enter mark: ")
+course_id = input("Enter id: ")
 
 def put_data_in(file_path: str, table_name):
     """
@@ -31,6 +34,7 @@ c.execute("CREATE TABLE IF NOT EXISTS students (name STRING, age INTERGER, id IN
 put_data_in("./data/students.csv", "students")
 c.execute("CREATE TABLE IF NOT EXISTS courses (code STRING, mark INTERGER, id INTERGER);")
 put_data_in("./data/courses.csv", "courses")
+c.execute("INSERT INTO courses VALUES ('{}', {}, {})".format(course_code, course_mark, course_id))
 
 c.execute("CREATE TABLE IF NOT EXISTS stu_avg (name STRING, id INTEGER, ave INTEGER);")
 
@@ -51,6 +55,10 @@ for name, id, mark in result:
 
 for row in dict:
     c.execute("INSERT INTO stu_avg VALUES(\"{}\", {}, {});".format(row, dict[row][0], dict[row][1]/dict[row][2]))
+
+table = c.execute("SELECT * FROM stu_avg")
+for row in table:
+    print(row)
 
 db.commit() #save changes
 db.close()  #close database
