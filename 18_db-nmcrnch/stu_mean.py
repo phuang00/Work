@@ -89,16 +89,47 @@ def look_up_grade(id):
         if student_id == id:
             print("Student: {} (id {}) \t Course: {} \t Grade: {}".format(name, student_id, course_name, mark))
 
+"""
+We will check:
+- No single quote in course field
+- No non int grade
+- User id must exist in db
+-
+"""
+def is_number(value):
+    try:
+        int(value)
+        return True
+    except ValueError:
+        return False
+
+def ids():
+    list = []
+    for row in c.execute("SELECT id FROM students"):
+        list.append(row[0])
+    return list
 
 def add_grade():
-    c.execute("INSERT INTO courses VALUES ('{}', {}, {})".format(
-        input("Enter course code: "),
-        int(input("Enter mark: ")),
-        int(input("Enter id: "))))
+    valid = False
+    code = input("Enter course code: ")
+    mark = input("Enter mark: ")
+    while (not valid):
+        if (not is_number(mark)):
+            mark = input("Please enter a valid mark: ")
+        else:
+            valid = True
+    valid = False
+    id = input("Enter id: ")
+    while (not valid):
+        if (not is_number(id) or (not int(id) in ids())):
+            id = input("Please enter a valid id: ")
+        else:
+            valid = True
+    c.execute("INSERT INTO courses VALUES ('{}', {}, {})".format(code, int(mark), int(id)))
 
 
 create_tables()
-# add_grade()
+add_grade()
 generate_and_store_averages()
 print_averages()
 look_up_grade(1)
