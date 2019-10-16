@@ -112,12 +112,21 @@ def ids():
 def add_grade():
     valid = False
     code = input("Enter course code: ")
+    while(not valid):
+        if (not code or "'" in code):
+            # Basic check for sql injection
+            code = input("Enter course code without single quotes:")
+        else:
+            valid = True
+
+    valid = False
     mark = input("Enter mark: ")
     while (not valid):
         if (not is_number(mark)):
             mark = input("Please enter a valid mark: ")
         else:
             valid = True
+
     valid = False
     id = input("Enter id: ")
     while (not valid):
