@@ -1,0 +1,36 @@
+body {
+    background-color: #686868;
+    font-family: verdana;
+}
+h1 {
+    text-align: center;
+    color: white;
+    background-color: lightgray;
+    margin: 0px;
+}
+.column {
+    float: left;
+    background-color: gray;
+    height: 430px;
+}
+#col1 {
+    width: 25%;
+}
+#col2 {
+    width: 75%;
+}
+ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+a {
+    color: white;
+    text-decoration: none;
+}
+.footer {
+    clear: both;
+    background-color: #505050;
+    text-align: right;
+    padding: 10px;
+    color: gray;
+}
