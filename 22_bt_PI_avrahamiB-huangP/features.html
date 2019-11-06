@@ -14,14 +14,56 @@
     <style>
       .carousel{
         width: 100%;
-        height: 100px;
+        height: 300px;
         text-align: center;
         background-color: gray;
+        font-size: 30px;
       }
     </style>
   </head>
   <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="#">Team PI</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Link</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Dropdown
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="#navbarSupportedContent">Link 1</a>
+              <a class="dropdown-item" href="#">Link 2</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="#">Link n</a>
+            </div>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+          </li>
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+          <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
+      </div>
+    </nav>
     <h1>Key Features of Bootstrap</h1>
+    <br>
+    <p>Bootstrap is a framework for building responsive, mobile-first sites. It
+      has many features that we will demonstrate below.
+
+
+    </p>
     <br>
     <h2>Grid System</h2>
     <div class="container">
@@ -32,7 +74,8 @@
         <div class="col">
             Columns are automatically divided equally like this.
         </div>
-        <div class="col border">
+        <div class="w-100"></div>
+        <div class="col border bg-light">
             Borders can also be added to said columns
         </div>
         <div class="col">
@@ -80,35 +123,24 @@
       <li>tag del is used for <del>deleted</del> text (strikethroughs)</li>
       <li class="text-muted">class text-muted results in lighter text</li>
       <li>tag small results in <small>fine print</small></li>
-      <li>tag abbr can be used to show text when you <abbr title="tada">hover</abbr> over it</li>
+      <li>tag abbr can be used to show text when you <abbr title="tada, more text appears">hover</abbr> over it</li>
     </ul>
-    <h3>There are eight types of alerts:</h3>
-    <div class="alert alert-primary" role="alert">
-      primary alert
-    </div>
-    <div class="alert alert-secondary" role="alert">
-      secondary alert
-    </div>
-    <div class="alert alert-success" role="alert">
-      success alert
-    </div>
-    <div class="alert alert-danger" role="alert">
-      danger alert
-    </div>
-    <div class="alert alert-warning" role="alert">
-      warning alert
-    </div>
-    <div class="alert alert-info" role="alert">
-      info alert
-    </div>
-    <div class="alert alert-light" role="alert">
-      light alert
-    </div>
-    <div class="alert alert-dark" role="alert">
-      dark alert
-    </div>
+    <h3>There are eight types of colors:</h3>
+    <button type="button" class="btn btn-primary">Primary</button>
+    <button type="button" class="btn btn-secondary">Secondary</button>
+    <button type="button" class="btn btn-success">Success</button>
+    <button type="button" class="btn btn-danger">Danger</button>
+    <button type="button" class="btn btn-warning">Warning</button>
+    <button type="button" class="btn btn-info">Info</button>
+    <button type="button" class="btn btn-light">Light</button>
+    <button type="button" class="btn btn-dark">Dark</button>
     <br>
-    <span class="badge badge-secondary">badges</span> and <button type="button" class="btn btn-primary">buttons</button> can also be one of the eight types above
+    <br>
+    These colors can also be used for <button type="button" class="btn btn-primary">buttons</button>,
+    <span class="badge badge-secondary">badges</span> and
+    <div class="alert alert-primary" role="alert">
+      alerts!
+    </div>
     <br>
     <br>
     <h3>Breadcrumb:</h3>
@@ -267,15 +299,12 @@
       </ul>
     </nav>
     <br>
-    <h3>Progress:</h3>
+    <h3>You're finished!</h3>
     showing a progress bar...
     <div class="progress">
-      <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 75%"></div>
+      <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div>
     </div>
     <br>
-    <h3>Spinners:</h3>
-    <div class="spinner-border" role="status">
-      <span class="sr-only">Loading...</span>
-    </div>
+
   </body>
 </html>
