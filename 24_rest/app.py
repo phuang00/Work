@@ -10,8 +10,8 @@ app = Flask(__name__)
 
 @app.route("/")
 def root():
-    u = urllib3.urlopen("https://api.nasa.gov/planetary/apod?api_key=KaSPKF6wwTVHdhAzFcp9iivZUrgmlz1TtxRHge2U")
-    response = u.read()
+    u = urllib3.PoolManager()
+    response = u.request('GET', "https://api.nasa.gov/planetary/apod?api_key=KaSPKF6wwTVHdhAzFcp9iivZUrgmlz1TtxRHge2U")
     data = json.loads(response)
     return render_template("index.html", pic=data['url'])
 
