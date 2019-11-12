@@ -1,7 +1,7 @@
 #Benjamin Peihua Huang
 #SoftDev1 pd2
-#K?? -- ?????
-#????-??-??
+#K24 -- A RESTful Journey Skyward
+#2019-11-12
 
 from flask import Flask
 from flask import render_template
