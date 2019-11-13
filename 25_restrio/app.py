@@ -10,10 +10,14 @@ app = Flask(__name__)
 
 @app.route("/")
 def root():
+    return render_template("index.html")
+
+@app.route("/ghibli")
+def ghibli():
     u = urllib.request.urlopen("https://ghibliapi.herokuapp.com/locations")
     response = u.read()
     data = json.loads(response)
-    return render_template("index.html", locations=data)
+    return render_template("ghibli.html", locations=data)
 
 @app.route("/ddclasses")
 def cards():
@@ -21,6 +25,13 @@ def cards():
     response = u.read()
     data = json.loads(response)
     return render_template("results.html", classes=data["results"])
+
+@app.route("/weather")
+def loripsum():
+    u = urllib.request.urlopen("https://api.darksky.net/forecast/14bbf557960676ac31fd1ee5266f5da7/40.718100,-74.014760")
+    response = u.read()
+    data = json.loads(response)
+    return render_template("weather.html", info=data["currently"])
 
 if __name__ == "__main__":
     app.debug = True

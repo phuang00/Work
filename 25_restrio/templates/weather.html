@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>
+			Weather
+		</title>
+	</head>
+	<body>
+		<h1>Current Weather at Stuyvesant HS</h1>
+		{% for item in info %}
+		<p>{{item}}: {{info[item]}}</p>
+		{% endfor %}
+	</body>
+</html>

@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>
+			Ghibli
+		</title>
+	</head>
+	<body>
+		<h1>Studio Ghibli Locations</h1>
+		<ul>
+			{% for item in locations %}
+			<li>{{item["name"]}}</li>
+			{% endfor %}
+		</ul>
+	</body>
+</html>
