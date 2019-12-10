@@ -40,6 +40,6 @@ var gcd = function(a, b) {
 };
 
 var randomStudent = function() {
-  var list = ["student a", "b,", "c"]
-  return list.length;
+  var list = ['William', 'Joseph', 'Calvin', 'Ethan', 'Moody', 'Mo', 'Big Mo', 'Peihua', 'Saad', 'Benjamin', 'Justin', 'Alice', 'Hilary', 'Ayham', 'Michael', 'Matthew', 'Jionghao', 'Devin', 'David', 'Jacob', 'Will', 'Hannah', 'Alex'];
+  return list[Math.floor(Math.random() * 1000 % list.length)];
 };
