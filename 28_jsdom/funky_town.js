@@ -44,17 +44,17 @@ var randomStudent = function() {
 
 var eventHelper = function(btn) {
 	var ans;
-	if (btn == document.getElementById("fxn1")){
+	if (btn == "fxn1"){
 		ans = fibonacci(5);
 		console.log(ans);
 		document.getElementById("p1").innerHTML = "fibonacci(5) = " + ans;
 	}
-	else if (btn == document.getElementById("fxn2")){
+	else if (btn == "fxn2"){
 		ans = gcd(15, 225);
 		console.log(ans);
 		document.getElementById("p2").innerHTML = "gcd(15, 225) = " + ans;
 	}
-	else if (document.getElementById("fxn3")){
+	else if (btn == "fxn3"){
 		ans = randomStudent();
 		console.log(ans);
 		document.getElementById("p3").innerHTML = "randomStudent() = " + ans;
@@ -63,15 +63,15 @@ var eventHelper = function(btn) {
 
 var btn1 = document.getElementById("fxn1");
 btn1.addEventListener('click', function(){
-	eventHelper(btn1);
+	eventHelper(btn1.id);
 });
 
 var btn2 = document.getElementById("fxn2");
 btn2.addEventListener('click', function(){
-	eventHelper(btn2);
+	eventHelper(btn2.id);
 });
 
 var btn3 = document.getElementById("fxn3");
 btn3.addEventListener('click', function(){
-	eventHelper(btn3);
+	eventHelper(btn3.id);
 });
