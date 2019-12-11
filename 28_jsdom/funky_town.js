@@ -1,3 +1,8 @@
+// Peihua Huang, Tyler Huang
+// SoftDev1 pd2
+// K28 -- Sequential Progression II
+// 2019-12-11
+
 var fact = function(n) {
 	if (n == 1){
     return 1;
@@ -46,19 +51,17 @@ var eventHelper = function(btn) {
 	var ans;
 	if (btn == "fxn1"){
 		ans = fibonacci(5);
-		console.log(ans);
 		document.getElementById("p1").innerHTML = "fibonacci(5) = " + ans;
 	}
 	else if (btn == "fxn2"){
 		ans = gcd(15, 225);
-		console.log(ans);
 		document.getElementById("p2").innerHTML = "gcd(15, 225) = " + ans;
 	}
 	else if (btn == "fxn3"){
 		ans = randomStudent();
-		console.log(ans);
 		document.getElementById("p3").innerHTML = "randomStudent() = " + ans;
 	}
+	console.log(ans);
 };
 
 var btn1 = document.getElementById("fxn1");

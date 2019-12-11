@@ -1,3 +1,8 @@
+// Peihua Huang, Brian Moses
+// SoftDev1 pd2
+// K27 -- Sequential Progression
+// 2019-12-11
+
 var fact = function(n) {
 	if (n == 1){
     return 1;
