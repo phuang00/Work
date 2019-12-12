@@ -21,11 +21,14 @@ for (var i = 0; i < lis.length; i++) {
 }
 
 var addItem = function(e) {
-  //var list = ; //getElementById? list
+  var list = document.getElementById("thelist"); //getElementById list
   var item = document.createElement("li");
-  //??? = "WORD"; //item.innerHTML?
+  item.innerHTML = "WORD"; //item.innerHTML?
   //maybe more stuff
-  //list.???(item); //appendChild
+  item.addEventListener('mouseover', changeHeading); //call changeHeading
+  item.addEventListener('mouseout', changeHeading); // call changeHeading back to helloworld
+  item.addEventListener('click', removeItem); //remove list item
+  list.appendChild(item); //appendChild
 };
 
 var button = document.getElementById("b");
@@ -40,13 +43,29 @@ var fib = function(n) {
   }
 };
 
+var fib_list = [];
+
 var addFib = function(e) {
   console.log(e);
+  var list = document.getElementById("fiblist");
+  var item = document.createElement("li");
+  item.innerHTML = addFib2(e);
+  list.appendChild(item);
   //??? // create list
 };
 
 var addFib2 = function(e) {
   console.log(e);
+  var ans;
+  var len = fib_list.length;
+  if (len < 2){
+    ans = fib(len);
+  }
+  else {
+    ans = fib_list[len - 1] + fib_list[len - 2];
+  }
+  fib_list.push(ans);
+  return ans;
   // dynamic programming, add to list
 };
 
