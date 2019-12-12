@@ -1,6 +1,11 @@
 var changeHeading = function(e) {
   var h = document.getElementById("h");
-  h.innerHTML = ;//the list item stuff
+  if (e.type == 'mouseout'){
+    h.innerHTML = "Hello World!";
+  }
+  else{
+    h.innerHTML = e.target.innerHTML;//the list item stuff
+  };
 };
 
 var removeItem = function(e) {
@@ -10,17 +15,17 @@ var removeItem = function(e) {
 var lis = document.getElementsByTagName("li");
 
 for (var i = 0; i < lis.length; i++) {
-  lis[i].addEventListener('mouseover', ???); //call changeHeading
-  list[i].addEventListener('mouseout', ???); // call changeHeading back to helloworld
-  lis[i].addEventListener('click', ???); //remove list item
+  lis[i].addEventListener('mouseover', changeHeading); //call changeHeading
+  lis[i].addEventListener('mouseout', changeHeading); // call changeHeading back to helloworld
+  //lis[i].addEventListener('click', ???); //remove list item
 }
 
 var addItem = function(e) {
-  var list = ; //getElementById? list
+  //var list = ; //getElementById? list
   var item = document.createElement("li");
-  ??? = "WORD"; //item.innerHTML?
+  //??? = "WORD"; //item.innerHTML?
   //maybe more stuff
-  list.???(item); //appendChild
+  //list.???(item); //appendChild
 };
 
 var button = document.getElementById("b");
@@ -37,7 +42,7 @@ var fib = function(n) {
 
 var addFib = function(e) {
   console.log(e);
-  ??? // create list
+  //??? // create list
 };
 
 var addFib2 = function(e) {
