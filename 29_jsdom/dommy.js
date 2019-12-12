@@ -4,12 +4,12 @@ var changeHeading = function(e) {
     h.innerHTML = "Hello World!";
   }
   else{
-    h.innerHTML = e.target.innerHTML;//the list item stuff
+    h.innerHTML = e.target.innerHTML;
   };
 };
 
 var removeItem = function(e) {
-  //element.remove() stuff
+  e.target.remove();
 };
 
 var lis = document.getElementsByTagName("li");
@@ -17,7 +17,7 @@ var lis = document.getElementsByTagName("li");
 for (var i = 0; i < lis.length; i++) {
   lis[i].addEventListener('mouseover', changeHeading); //call changeHeading
   lis[i].addEventListener('mouseout', changeHeading); // call changeHeading back to helloworld
-  //lis[i].addEventListener('click', ???); //remove list item
+  lis[i].addEventListener('click', removeItem); //remove list item
 }
 
 var addItem = function(e) {
