@@ -7,7 +7,7 @@ var removeItem = function(e) {
   //element.remove() stuff
 };
 
-var list = document.getElementsByTagName("li");
+var lis = document.getElementsByTagName("li");
 
 for (var i = 0; i < lis.length; i++) {
   lis[i].addEventListener('mouseover', ???); //call changeHeading
