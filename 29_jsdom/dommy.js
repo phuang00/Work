@@ -5,16 +5,16 @@
 
 var changeHeading = function(e) {
   var h = document.getElementById("h");
-  if (e.type == 'mouseout'){
-    h.innerHTML = "Hello World!";
+  if (e.type == 'mouseout'){ // if the event is mouseout
+    h.innerHTML = "Hello World!"; //set the text inside heading back to 'Hello World!'
   }
   else{
-    h.innerHTML = e.target.innerHTML;
+    h.innerHTML = e.target.innerHTML; //replace text inside heading with the text of the item calling it
   };
 };
 
 var removeItem = function(e) {
-  e.target.remove();
+  e.target.remove(); // remove the list item element that the event is being called by
 };
 
 var lis = document.getElementsByTagName("li");
@@ -56,7 +56,6 @@ var addFib = function(e) {
   var item = document.createElement("li");
   item.innerHTML = addFib2(e);
   list.appendChild(item);
-  //??? // create list
 };
 
 var addFib2 = function(e) {
@@ -74,5 +73,22 @@ var addFib2 = function(e) {
   // dynamic programming, add to list
 };
 
+var fact = function(n) {
+  //fact function
+};
+
+var fact_list = [];
+
+var addFact = function(e) {
+  //create element stuff
+};
+
+var addFact2 = function(e) {
+  //dynamic programming add to list
+}
+
 var fb = document.getElementById("fb");
 fb.addEventListener('click', addFib);
+
+var ft = document.getElementById("ft");
+ft.addEventListener('click', addFact);
