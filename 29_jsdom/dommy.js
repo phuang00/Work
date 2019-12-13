@@ -1,3 +1,8 @@
+// Hannah Fried, Peihua Huang
+// SoftDev1 pd2
+// K29 -- Sequential Progression III
+// 2019-12-12
+
 var changeHeading = function(e) {
   var h = document.getElementById("h");
   if (e.type == 'mouseout'){
@@ -46,7 +51,7 @@ var fib = function(n) {
 var fib_list = [];
 
 var addFib = function(e) {
-  console.log(e);
+  //console.log(e);
   var list = document.getElementById("fiblist");
   var item = document.createElement("li");
   item.innerHTML = addFib2(e);
@@ -55,7 +60,7 @@ var addFib = function(e) {
 };
 
 var addFib2 = function(e) {
-  console.log(e);
+  //console.log(e);
   var ans;
   var len = fib_list.length;
   if (len < 2){
