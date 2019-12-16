@@ -54,12 +54,15 @@ var addFib = function(e) {
   //console.log(e);
   var list = document.getElementById("fiblist");
   var item = document.createElement("li");
-  item.innerHTML = addFib2(e);
+  var n = list.getElementsByTagName("li").length;
+  item.innerHTML = fib(n);
   list.appendChild(item);
 };
 
 var addFib2 = function(e) {
   //console.log(e);
+  var list = document.getElementById("fiblist");
+  var item = document.createElement("li");
   var ans;
   var len = fib_list.length;
   if (len < 2){
@@ -69,26 +72,46 @@ var addFib2 = function(e) {
     ans = fib_list[len - 1] + fib_list[len - 2];
   }
   fib_list.push(ans);
-  return ans;
+  item.innerHTML = ans;
+  list.appendChild(item);
   // dynamic programming, add to list
 };
 
 var fact = function(n) {
-  //fact function
+  return (n != 1) ? n * fact(n - 1) : 1;
 };
 
 var fact_list = [];
 
 var addFact = function(e) {
-  //create element stuff
+  //console.log(e);
+  var list = document.getElementById("factlist");
+  var item = document.createElement("li");
+  var n = list.getElementsByTagName("li").length;
+  item.innerHTML = fact(n + 1);
+  list.appendChild(item);
 };
 
 var addFact2 = function(e) {
-  //dynamic programming add to list
+  //console.log(e);
+  var list = document.getElementById("factlist");
+  var item = document.createElement("li");
+  var ans;
+  var len = fact_list.length;
+  if (len < 1) {
+    ans = fact(1);
+  }
+  else {
+    ans = fact_list[len - 1] * (len + 1);
+  }
+  fact_list.push(ans);
+  item.innerHTML = ans;
+  list.appendChild(item);
+  // dynamic programming, add to list
 }
 
 var fb = document.getElementById("fb");
-fb.addEventListener('click', addFib);
+fb.addEventListener('click', addFib2);
 
 var ft = document.getElementById("ft");
 ft.addEventListener('click', addFact);
