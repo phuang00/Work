@@ -25,7 +25,7 @@ var toggle = function(e){
     state = "box";
     mode.innerHTML = "box";
   }
-  console.log(state);
+  //console.log(state);
 }
 
 var draw = function(e){
