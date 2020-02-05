@@ -29,6 +29,12 @@ var draw = function(e){
   if (state == "box"){
     ctx.fillRect(x, y, 28, 28);
   }
+  else {
+    ctx.beginPath();
+    ctx.arc(x, y, 10, 0, 2 * Math.PI);
+    ctx.stroke();
+    ctx.fill();
+  }
 }
 
 var cle = document.getElementById("cle");
