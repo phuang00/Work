@@ -14,6 +14,8 @@ var ctx = c.getContext("2d");
 var clear = function(e){
   console.log(e);
   ctx.clearRect(0, 0, c.width, c.height);
+  lastX = -1;
+  lastY = -1;
 }
 
 var draw = function(e){
