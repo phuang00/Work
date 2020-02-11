@@ -12,7 +12,7 @@ var ctx = c.getContext("2d");
 //ctx.fillRect(50, 50, 100, 200);
 
 var clear = function(e){
-  console.log(e);
+  //console.log(e);
   ctx.clearRect(0, 0, c.width, c.height);
   lastX = -1;
   lastY = -1;
