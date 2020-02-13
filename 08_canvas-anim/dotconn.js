@@ -1,7 +1,7 @@
 // Peihua Huang and Jackie Lin (Team Pencils)
 // SoftDev1 pd1
-// K07 -- Canvas Anim
-// 2020-02-12
+// K08 -- What is it saving the screen from?
+// 2020-02-13
 
 var c = document.getElementById("playground");
 var ctx = c.getContext("2d");
