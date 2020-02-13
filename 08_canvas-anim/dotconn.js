@@ -46,7 +46,7 @@ var animate = function(e){
     increment = -increment;
   }
   ctx.clearRect(0, 0, c.width, c.height);
-  console.log(radius);
+  //console.log(radius);
   ctx.beginPath();
   ctx.arc(c.width/2, c.height/2, radius, 0, 2 * Math.PI);
   ctx.stroke();
