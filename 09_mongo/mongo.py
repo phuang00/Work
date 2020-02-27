@@ -9,12 +9,12 @@ from pymongo import MongoClient
 
 client = MongoClient()
 db = client.test
-db.restaurants.drop()
 restaurants = db.restaurants
-file = open("primer-dataset.json", "r")
-content = file.readlines()
-for line in content:
-    restaurants.insert_one(loads(line))
+if (restaurants.count() == 0):
+    file = open("primer-dataset.json", "r")
+    content = file.readlines()
+    for line in content:
+        restaurants.insert_one(loads(line))
 #for item in restaurants.find({}):
 #    print(item)
 
@@ -34,14 +34,46 @@ def find_zip_score(zipcode, score):
     '''All restaurants in a specified zip code with a score below a specified threshold.'''
     return restaurants.find({"address.zipcode": zipcode, "grades.score" : {"$lt" : score}})
 
+def find_num_zip(zipcode, number):
+    '''Returns specified number of restaurants in given zip code.'''
+    return restaurants.find({"address.zipcode": zipcode}).limit(number)
+
+print("------------FINDING ALL RESTAURANTS IN BROOKLYN------------")
 for rest in find_borough("Brooklyn"):
-    print(rest)
+    for key, value in rest.items():
+        if key == "name":
+            print("{name: %s}" % value)
+    #print(rest)
 
+print("------------FINDING ALL RESTAURANTS IN 11225------------")
 for rest in find_zipcode("11225"):
-    print(rest)
+    for key, value in rest.items():
+        if key == "name":
+            print("{name: %s}" % value)
+    #print(rest)
 
+print("------------FINDING ALL RESTAURANTS IN 10462 with Grade A------------")
 for rest in find_zip_grade("10462", "A"):
-    print(rest)
+    for key, value in rest.items():
+        if key == "name":
+            print("{name: %s}" % value)
+    #print(rest)
 
+print("------------FINDING ALL RESTAURANTS IN 10019 with Score < 4------------")
 for rest in find_zip_score("10019", 4):
-    print(rest)
+    for key, value in rest.items():
+        if key == "name":
+            print("{name: %s}" % value)
+    #print(rest)
+
+print("------------FINDING N RESTAURANTS IN GIVEN ZIPCODE------------")
+zip = input("Please enter a zipcode: ")
+while (not zip.isnumeric() or int(zip) < 7005 or int(zip) > 11697):
+    zip = input("Please enter a valid zipcode: ")
+number = input("Please enter the maximum number of results you want to return: ")
+while (not number.isnumeric() or int(number) < 0):
+    number = input("Please enter a valid number: ")
+for rest in find_num_zip(zip, int(number)):
+    for key, value in rest.items():
+        if key == "name":
+            print("{name: %s}" % value)
