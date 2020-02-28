@@ -20,8 +20,33 @@ file = open("primer-dataset.json", "r")
 content = loads(file.read())["objects"]
 for i in range(len(content)):
     senators.insert_one(content[i])
-for item in senators.find({}, {"person.name" : 1}):
-    print(item)
+# for item in senators.find({}, {"person.name" : 1}):
+#     print(item)
+
+
+def find_state(state):
+    '''Returns all senators representing the specified state'''
+    return senators.find({"state" : state}, {"_id" : 0, "person.name" : 1})
+
+def find_party(party):
+    '''Returns all senators in specified party'''
+    return senators.find({"party" : party}, {"_id" : 0, "person.name" : 1})
+
+
+print("-----FINDING ALL SENATORS IN NY-----")
+for item in find_state("NY"):
+    print(item["person"])
+
+print("-----FINDING ALL DEMOCRATIC SENATORS-----")
+for item in find_party("Democrat"):
+    print(item["person"])
+
+
+
+
+
+
+
 
 # def find_borough(borough):
 #     '''All restaurants in a specified borough'''
