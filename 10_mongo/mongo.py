@@ -14,14 +14,14 @@ from pymongo import MongoClient
 
 client = MongoClient()
 db = client.computers
+db.senators.drop()
 senators = db.senators
 file = open("primer-dataset.json", "r")
-content = loads(file.read())
-    # for line in content:
-    #     senators.insert_one(loads(line))
-for item in content[objects]:
-    print(content[objects][item])
-    print("\n")
+content = loads(file.read())["objects"]
+for i in range(len(content)):
+    senators.insert_one(content[i])
+for item in senators.find({}, {"person.name" : 1}):
+    print(item)
 
 # def find_borough(borough):
 #     '''All restaurants in a specified borough'''
