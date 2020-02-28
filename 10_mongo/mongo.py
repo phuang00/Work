@@ -6,22 +6,22 @@
 # Name of Dataset: Current US Senators
 # Description: The dataset contains basic information on all the current US Senators
 # Hyperlink: https://www.govtrack.us/api/v2/role?current=true&role_type=senator
-# Brief Summary: 
+# Brief Summary:
 
 
 from bson.json_util import loads
 from pymongo import MongoClient
 
 client = MongoClient()
-db = client.test
-restaurants = db.restaurants
-if (restaurants.count() == 0):
+db = client.computers
+senators = db.senators
+if (senators.count() == 0):
     file = open("primer-dataset.json", "r")
     content = file.readlines()
     for line in content:
         restaurants.insert_one(loads(line))
-#for item in restaurants.find({}):
-#    print(item)
+for item in restaurants.find({}):
+    print(item.fancy())
 
 def find_borough(borough):
     '''All restaurants in a specified borough'''
