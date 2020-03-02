@@ -40,6 +40,10 @@ def find_website(firstname):
     '''Returns website of all senators with a given first name'''
     return senators.find({"person.firstname" : firstname}, {"_id" : 0, "person.name" : 1, "website" : 1})
 
+def find_description(lastname):
+    '''Returns description of all senators with a given last name'''
+    return senators.find({"person.lastname" : lastname}, {"_id" : 0, "person.name" : 1, "description" : 1})
+
 print("-----FINDING ALL SENATORS IN NY-----")
 for item in find_state("NY"):
     print(item["person"])
@@ -56,7 +60,9 @@ print("-----FINDING WEBSITE OF SENATORS WHOSE FIRST NAME IS KEVIN")
 for item in find_website("Kevin"):
     print(item["person"])
 
-
+print("-----FINDING WEBSITE OF SENATORS WHOSE LAST NAME IS ALEXANDER")
+for item in find_description("Alexander"):
+    print(item["person"])
 
 
 
