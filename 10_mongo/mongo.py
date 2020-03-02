@@ -32,6 +32,9 @@ def find_party(party):
     '''Returns all senators in specified party'''
     return senators.find({"party" : party}, {"_id" : 0, "person.name" : 1})
 
+def find_gender(gender):
+    '''Returns all senators of specified gender'''
+    return senators.find({"person.gender" : gender}, {"_id" : 0, "person.name" : 1})
 
 print("-----FINDING ALL SENATORS IN NY-----")
 for item in find_state("NY"):
@@ -41,6 +44,9 @@ print("-----FINDING ALL DEMOCRATIC SENATORS-----")
 for item in find_party("Democrat"):
     print(item["person"])
 
+print("----FINDING ALL FEMALE SENATORS-----")
+for item in find_gender("female"):
+    print(item["person"])
 
 
 
