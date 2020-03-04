@@ -6,7 +6,7 @@
 # Name of Dataset: Current US Senators
 # Description: The dataset contains basic information on all the current US Senators
 # Hyperlink: https://www.govtrack.us/api/v2/role?current=true&role_type=senator
-# Brief Summary:
+# Brief Summary: We imported the dataset by first opening the file and then using loads from bson.json_util to convert the json file into a dictonary. We then inserted each of the senator entries into the mongodb one line at a time.
 
 
 from bson.json_util import loads
@@ -44,84 +44,31 @@ def find_description(lastname):
     '''Returns description of all senators with a given last name'''
     return senators.find({"person.lastname" : lastname}, {"_id" : 0, "person.name" : 1, "description" : 1})
 
+def find_num_gender(gender, number):
+    '''Return num number of senators of specified gender'''
+    return senators.find({"person.gender" : gender}, {"_id" : 0, "person.name" : 1}).limit(number)
+
 print("-----FINDING ALL SENATORS IN NY-----")
 for item in find_state("NY"):
-    print(item["person"])
+    print(item["person"]["name"])
 
 print("-----FINDING ALL DEMOCRATIC SENATORS-----")
 for item in find_party("Democrat"):
-    print(item["person"])
+    print(item["person"]["name"])
 
 print("----FINDING ALL FEMALE SENATORS-----")
 for item in find_gender("female"):
-    print(item["person"])
+    print(item["person"]["name"])
 
-print("-----FINDING WEBSITE OF SENATORS WHOSE FIRST NAME IS KEVIN")
+print("-----FINDING WEBSITE OF SENATORS WHOSE FIRST NAME IS KEVIN-----")
 for item in find_website("Kevin"):
-    print(item["person"])
+    print(item["person"]["name"],":", item["website"])
 
-print("-----FINDING WEBSITE OF SENATORS WHOSE LAST NAME IS ALEXANDER")
+print("-----FINDING DESCRIPTION OF SENATORS WHOSE LAST NAME IS ALEXANDER-----")
 for item in find_description("Alexander"):
-    print(item["person"])
+    print(item["person"]["name"], ":", item["description"])
 
+print("-----FINDING 5 MALE SENATORS-----")
+for item in find_num_gender("male", 5):
+    print(item["person"]["name"])
 
-
-# def find_borough(borough):
-#     '''All restaurants in a specified borough'''
-#     return restaurants.find({"borough" : borough})
-#
-# def find_zipcode(zipcode):
-#     '''All restaurants in a specified zip code'''
-#     return restaurants.find({"address.zipcode" : zipcode})
-#
-# def find_zip_grade(zipcode, grade):
-#     '''All restaurants in a specified zip code and with a specified grade.'''
-#     return restaurants.find({"address.zipcode" : zipcode, "grades.grade" : grade})
-#
-# def find_zip_score(zipcode, score):
-#     '''All restaurants in a specified zip code with a score below a specified threshold.'''
-#     return restaurants.find({"address.zipcode": zipcode, "grades.score" : {"$lt" : score}})
-#
-# def find_num_zip(zipcode, number):
-#     '''Returns specified number of restaurants in given zip code.'''
-#     return restaurants.find({"address.zipcode": zipcode}).limit(number)
-#
-# print("------------FINDING ALL RESTAURANTS IN BROOKLYN------------")
-# for rest in find_borough("Brooklyn"):
-#     for key, value in rest.items():
-#         if key == "name":
-#             print("{name: %s}" % value)
-#     #print(rest)
-#
-# print("------------FINDING ALL RESTAURANTS IN 11225------------")
-# for rest in find_zipcode("11225"):
-#     for key, value in rest.items():
-#         if key == "name":
-#             print("{name: %s}" % value)
-#     #print(rest)
-#
-# print("------------FINDING ALL RESTAURANTS IN 10462 with Grade A------------")
-# for rest in find_zip_grade("10462", "A"):
-#     for key, value in rest.items():
-#         if key == "name":
-#             print("{name: %s}" % value)
-#     #print(rest)
-#
-# print("------------FINDING ALL RESTAURANTS IN 10019 with Score < 4------------")
-# for rest in find_zip_score("10019", 4):
-#     for key, value in rest.items():
-#         if key == "name":
-#             print("{name: %s}" % value)
-#     #print(rest)
-#
-# print("------------FINDING N RESTAURANTS IN GIVEN ZIPCODE------------")
-# zip = input("Please enter a zipcode: ")
-# while (not zip.isnumeric() or int(zip) < 7005 or int(zip) > 11697):
-#     zip = input("Please enter a valid zipcode: ")
-# number = input("Please enter the maximum number of results you want to return: ")
-# while (not number.isnumeric() or int(number) <= 0):
-#     number = input("Please enter an integer greater than zero: ")
-# for rest in find_num_zip(zip, int(number)):
-#     for key, value in rest.items():
-#         if key == "name":
-#             print("{name: %s}" % value)
