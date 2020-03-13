@@ -22,8 +22,6 @@ def create_senators():
     content = loads(file.read())["objects"]
     for i in range(len(content)):
         senators.insert_one(content[i])
-    # for item in senators.find({}, {"person.name" : 1}):
-    #     print(item)
 
 
 def find_state(state):
