@@ -1,4 +1,12 @@
 {% extends "base.html" %}
 
 {% block body %}
+<form action="/history">
+  Find all events from place:
+  <input class="form-control" type="text" name="place">
+  <input class="btn btn-dark" type="submit" name="submit">
+</form>
+{% for item in event %}
+  {{item}}
+{% endfor %}
 {% endblock %}
