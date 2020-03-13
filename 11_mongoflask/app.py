@@ -43,7 +43,7 @@ def senators():
     if "last" in request.args:
         last = senator.find_description(request.args["last"])
     if "num_gen" in request.args:
-        num_gen = senator.find_num_gender(request.args["num_gen"], request.args["num"])
+        num_gen = senator.find_num_gender(request.args["num_gen"], int(request.args["num"]))
     return render_template("senators.html", state=state, party=party,
                                             gender=gender, first=first,
                                             last=last, num_gen=num_gen)
