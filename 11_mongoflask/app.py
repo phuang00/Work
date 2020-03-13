@@ -4,9 +4,9 @@
 #2020-03-04
 
 from flask import Flask, render_template, request, redirect, url_for, session
+# import events
+import senator
 import events
-import senators
-
 app = Flask(__name__)
 
 @app.route("/")
@@ -29,7 +29,7 @@ def senators():
 
 if __name__ == "__main__":
     app.debug = True
-    senators.create_senators()
+    senator.create_senators()
     events.create_events()
     # senators.create_senators()
     app.run(host='0.0.0.0')
