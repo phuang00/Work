@@ -50,26 +50,26 @@ def find_num_gender(gender, number):
     '''Return num number of senators of specified gender'''
     return senators.find({"person.gender" : gender}, {"_id" : 0, "person.name" : 1}).limit(number)
 
-print("-----FINDING ALL SENATORS IN NY-----")
-for item in find_state("NY"):
-    print(item["person"]["name"])
-
-print("-----FINDING ALL DEMOCRATIC SENATORS-----")
-for item in find_party("Democrat"):
-    print(item["person"]["name"])
-
-print("----FINDING ALL FEMALE SENATORS-----")
-for item in find_gender("female"):
-    print(item["person"]["name"])
-
-print("-----FINDING WEBSITE OF SENATORS WHOSE FIRST NAME IS KEVIN-----")
-for item in find_website("Kevin"):
-    print(item["person"]["name"],":", item["website"])
-
-print("-----FINDING DESCRIPTION OF SENATORS WHOSE LAST NAME IS ALEXANDER-----")
-for item in find_description("Alexander"):
-    print(item["person"]["name"], ":", item["description"])
-
-print("-----FINDING 5 MALE SENATORS-----")
-for item in find_num_gender("male", 5):
-    print(item["person"]["name"])
+# print("-----FINDING ALL SENATORS IN NY-----")
+# for item in find_state("NY"):
+#     print(item["person"]["name"])
+#
+# print("-----FINDING ALL DEMOCRATIC SENATORS-----")
+# for item in find_party("Democrat"):
+#     print(item["person"]["name"])
+#
+# print("----FINDING ALL FEMALE SENATORS-----")
+# for item in find_gender("female"):
+#     print(item["person"]["name"])
+#
+# print("-----FINDING WEBSITE OF SENATORS WHOSE FIRST NAME IS KEVIN-----")
+# for item in find_website("Kevin"):
+#     print(item["person"]["name"],":", item["website"])
+#
+# print("-----FINDING DESCRIPTION OF SENATORS WHOSE LAST NAME IS ALEXANDER-----")
+# for item in find_description("Alexander"):
+#     print(item["person"]["name"], ":", item["description"])
+#
+# print("-----FINDING 5 MALE SENATORS-----")
+# for item in find_num_gender("male", 5):
+#     print(item["person"]["name"])
