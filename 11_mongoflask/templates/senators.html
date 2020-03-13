@@ -12,7 +12,7 @@ Senators
 </form>
 <ul>
   {% for person in state %}
-    <li>{{person['person']}}</li>
+    <li>{{person['person']['name']}}</li>
   {% endfor %}
 </ul>
 
@@ -23,7 +23,7 @@ Senators
 </form>
 <ul>
   {% for person in party %}
-    <li>{{person['person']}}</li>
+    <li>{{person['person']['name']}}</li>
   {% endfor %}
 </ul>
 
@@ -34,7 +34,7 @@ Senators
 </form>
 <ul>
   {% for person in gender %}
-    <li>{{person['person']}}</li>
+    <li>{{person['person']['name']}}</li>
   {% endfor %}
 </ul>
 
@@ -45,7 +45,7 @@ Senators
 </form>
 <ul>
   {% for person in first %}
-    <li>{{person['person']}}</li>
+    <li>{{person['person']['name']}}: {{person['website']}}</li>
   {% endfor %}
 </ul>
 
@@ -56,7 +56,7 @@ Senators
 </form>
 <ul>
   {% for person in last %}
-    <li>{{person['person']}}</li>
+    <li>{{person['person']['name']}}: {{person['description']}}</li>
   {% endfor %}
 </ul>
 
@@ -65,10 +65,10 @@ Senators
   <input class="form-control" type="text" name="num_gen">
   <input class="btn btn-dark" type="submit" name="submit">
 </form>
-<ul>
+<ol>
   {% for person in num_gen %}
-    <li>{{person['person']}}</li>
+    <li>{{person['person']['name']}}</li>
   {% endfor %}
-</ul>
+</ol>
 
 {% endblock %}
