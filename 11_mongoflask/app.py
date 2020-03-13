@@ -5,6 +5,7 @@
 
 from flask import Flask, render_template, request, redirect, url_for, session
 import events
+import senators
 
 app = Flask(__name__)
 
@@ -15,6 +16,10 @@ def home():
 @app.route("/history")
 def history():
     if "place" in request.args:
+        print("hi")
+        data = events.get_by_place("Egypt")
+        for item in data:
+            print(item['description'])
         return render_template("history.html", event=events.get_by_place(request.args["place"]))
     return render_template("history.html")
 
@@ -24,4 +29,6 @@ def senators():
 
 if __name__ == "__main__":
     app.debug = True
+    events.create_events()
+    senators.create_senator()
     app.run(host='0.0.0.0')

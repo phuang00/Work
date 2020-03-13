@@ -7,6 +7,6 @@
   <input class="btn btn-dark" type="submit" name="submit">
 </form>
 {% for item in event %}
-  {{item}}
+  {{item['description']}}
 {% endfor %}
 {% endblock %}

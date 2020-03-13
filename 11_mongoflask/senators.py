@@ -14,10 +14,10 @@ from pymongo import MongoClient
 
 client = MongoClient()
 db = client.computers
+senators = db.senators
 
 def create_senator():
-    db.senators.drop()
-    senators = db.senators
+    senators.drop()
     file = open("primer-dataset.json", "r")
     content = loads(file.read())["objects"]
     for i in range(len(content)):
