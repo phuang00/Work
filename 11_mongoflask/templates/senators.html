@@ -1,4 +1,74 @@
 {% extends "base.html" %}
 
+{% block title %}
+Senators
+{% endblock %}
+
 {% block body %}
+<form action="/senators">
+  Find all senators from the state:
+  <input class="form-control" type="text" name="state">
+  <input class="btn btn-dark" type="submit" name="submit">
+</form>
+<ul>
+  {% for person in state %}
+    <li>{{person['person']}}</li>
+  {% endfor %}
+</ul>
+
+<form action="/senators">
+  Find all senators in the party:
+  <input class="form-control" type="text" name="party">
+  <input class="btn btn-dark" type="submit" name="submit">
+</form>
+<ul>
+  {% for person in party %}
+    <li>{{person['person']}}</li>
+  {% endfor %}
+</ul>
+
+<form action="/senators">
+  Find all senators of gender:
+  <input class="form-control" type="text" name="gender">
+  <input class="btn btn-dark" type="submit" name="submit">
+</form>
+<ul>
+  {% for person in gender %}
+    <li>{{person['person']}}</li>
+  {% endfor %}
+</ul>
+
+<form action="/senators">
+  Find the websites of all senators with first name:
+  <input class="form-control" type="text" name="first">
+  <input class="btn btn-dark" type="submit" name="submit">
+</form>
+<ul>
+  {% for person in first %}
+    <li>{{person['person']}}</li>
+  {% endfor %}
+</ul>
+
+<form action="/senators">
+  Find descriptions of all senators with last name:
+  <input class="form-control" type="text" name="last">
+  <input class="btn btn-dark" type="submit" name="submit">
+</form>
+<ul>
+  {% for person in last %}
+    <li>{{person['person']}}</li>
+  {% endfor %}
+</ul>
+
+<form action="/senators">
+  Find <input class="form-control" type="text" name="num"> senators of gender:
+  <input class="form-control" type="text" name="num_gen">
+  <input class="btn btn-dark" type="submit" name="submit">
+</form>
+<ul>
+  {% for person in num_gen %}
+    <li>{{person['person']}}</li>
+  {% endfor %}
+</ul>
+
 {% endblock %}
