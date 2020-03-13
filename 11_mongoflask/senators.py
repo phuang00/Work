@@ -16,7 +16,7 @@ client = MongoClient()
 db = client.computers
 senators = db.senators
 
-def create_senator():
+def create_senators():
     senators.drop()
     file = open("primer-dataset.json", "r")
     content = loads(file.read())["objects"]

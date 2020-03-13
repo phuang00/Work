@@ -21,15 +21,16 @@ events = db.events
 
 def create_events():
     events.drop()
-    data = file.read() #convert file to str
-    data = data[30:-3] #clean up file
-    data = data.split("\"event\": ") #list of events
-    data.pop(0) #empty entry
-    for item in data:
-        if item[-1] == ' ':
-            item = item[0:-2] #formatting JSON object
-        item = json.loads(item) #load object
-        events.insert_one(item) #insert into database
+    with open('dataset.json') as file:
+        data = file.read() #convert file to str
+        data = data[30:-3] #clean up file
+        data = data.split("\"event\": ") #list of events
+        data.pop(0) #empty entry
+        for item in data:
+            if item[-1] == ' ':
+                item = item[0:-2] #formatting JSON object
+            item = json.loads(item) #load object
+            events.insert_one(item) #insert into database
 
 def get_by_place(location):
     '''Returns all events that happened in a certain region'''

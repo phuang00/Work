@@ -29,6 +29,7 @@ def senators():
 
 if __name__ == "__main__":
     app.debug = True
+    senators.create_senators()
     events.create_events()
-    senators.create_senator()
+    # senators.create_senators()
     app.run(host='0.0.0.0')
