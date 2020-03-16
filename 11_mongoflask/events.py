@@ -34,7 +34,8 @@ def create_events():
 
 def get_by_place(location):
     '''Returns all events that happened in a certain region'''
-    results = events.find({"category2" : location})
+    regex = "(\w*%s\w*)" % location
+    results = events.find({"category2" :{"$regex": regex, "$options": "i"}})
     return results
 
 def get_by_year(year):

@@ -16,13 +16,19 @@ def home():
 
 @app.route("/history")
 def history():
+    place = ""
+    year = ""
+    topic = ""
+    keyword = ""
     if "place" in request.args:
-        # print("hi")
-        # data = events.get_by_place("Egypt")
-        # for item in data:
-            # print(item['description'])
-        return render_template("history.html", event=events.get_by_place(request.args["place"]))
-    return render_template("history.html")
+        place = events.get_by_place(request.args["place"])
+    if "year" in request.args:
+        year = events.get_by_year(request.args["year"])
+    if "topic" in request.args:
+        topic = events.get_by_topic(request.args["topic"])
+    if "keyword" in request.args:
+        keyword = events.get_by_keyword(request.args["keyword"])
+    return render_template("history.html", place=place, year=year, topic=topic, keyword=keyword)
 
 @app.route("/senators")
 def senators():
