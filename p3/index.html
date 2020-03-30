@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Python Pandas</title>
+    <link rel="stylesheet" type="text/css" href="main.css">
+    <style>
+      body {
+        font-family: "Arial", sans-serif;
+        color:#333;
+        padding: 1.5%;
+      }
+
+      h1 {
+        font-size: 50px;
+      }
+
+      #prname {
+        color: #aaa;
+      }
+
+      #byname {
+        color: #666;
+        font-style: italic;
+        font-weight: 400;
+      }
+
+      h1, h2, h3, h4, h5, h6 {
+        padding: 0;
+        margin: 0;
+      }
+
+      hr {
+        margin-top: 25px;
+        margin-bottom: 25px;
+        border: 1px solid #ddd;
+      }
+
+      li {
+        margin-top: 5px;
+        margin-bottom: 5px;
+      }
+
+      p {
+        line-height:25px;
+      }
+
+      code {
+        font-size:14px;
+        color: #228B22;
+      }
+
+      pre {
+        border: 2px solid #aaa;
+        width: 42%;
+        border-radius:5px;
+        padding-top: 1%;
+        padding-bottom:0.5%;
+        background-color:#f9f9f9;
+        color:#DC143C;
+      }
+
+      span {
+        font-weight:700;
+        color:#3948DE;
+      }
+    </style>
+  </head>
+  <body>
+    <h3 id="prname">TEDxSoftDev</h3>
+    <h1>Python Pandas</h1>
+    <h3 id="byname">Jackie Lin and Peihua Huang (Team Har Gow Siu Mai)</h3>
+    <hr>
+    <h2>What is Python Pandas?</h2>
+    <ul>
+      <li>Software library written for Python</li>
+      <li>Used for data manipulation and analysis</li>
+      <li>Offers data structures and operations for manipulating tables</li>
+      <li>Free, open-source, fast and easy-to-use</li>
+    </ul>
+    <hr>
+    <h2>What type of data does pandas handle?</h2>
+    <ul>
+      <li>Designed to make working with <b>relational</b> or <b>labeled</b> data easy and intuitive; well-suited for:
+        <ul>
+          <li>Tabular data with heterogeneously-typed columns (SQL, Excel)</li>
+          <li>Ordered and unordered time series data</li>
+          <li>Arbitrary matrix data with row and column labels</li>
+          <li>Other observational/statistical datasets</li>
+        </ul>
+      </li>
+      <li>Data does not need to be labeled at all to be placed into a pandas data structure</li>
+    </ul>
+    <hr>
+    <h2>Benefits of using pandas</h2>
+    <ul>
+      <li>Easy handling of missing data (represented as <b>NaN</b>)</li>
+      <li>Size mutability: columns can easily be inserted or deleted</li>
+      <li>Powerful <b>group by</b> functionality that allows easy aggregation and transformation of datasets</li>
+      <li>Easy to convert Python and NumPy data structures into pandas data structures</li>
+      <li>Intelligent label-based slicing, indexing, and subsetting of large datasets</li>
+      <li>Intuitive merging and joining of datasets</li>
+      <li>Robust IO tools for loading data from CSV files, Excel, databases...etc.</li>
+    </ul>
+    <hr>
+    <h2>Data Structures in pandas</h2>
+    <ul>
+      <li>There are two types of data structures in pandas:
+        <ul>
+          <li><b>Series</b>: 1D labeled homogeneously-typed array (like a column in SQLite)</li>
+          <li><b>DataFrames</b>: 2D labeled tabular structure (like a table in SQLite)
+            <ul>
+              <li>Easy to add/drop Series</li>
+              <li>Can be created from:
+                <ul>
+                  <li>Dict of Series/lists</li>
+                  <li>List of dicts</li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+    <hr>
+    <h2>Reading and writing  data in pandas</h2>
+    <ul>
+      <li>pandas makes it easy to import and export csv, excel, sql, and other file formats/data sources
+        <ul>
+          <li><u>Note</u>: some files (such as excel) require additional modules</li>
+        </ul>
+      </li>
+      <li><b>read_*()</b> - read in the data and place it in a DataFrame</li>
+      <li><b>to_*()</b> - exports the DataFrame to the specified file format</li>
+      <li><b>info()</b> - provides technical data about a DataFrame
+        <ul>
+          <li>Includes row/column count, labels, type of data contained in entry (<b>dtype</b>)</li>
+        </ul>
+      </li>
+    </ul>
+    <hr>
+    <h2>Rummaging Through DataFrames</h2>
+    <ul>
+      <li><b>df.head(n)</b> / <b>df.tail(n)</b> - returns the first/last n (5 if n is not specified) rows of the DataFrame</li>
+      <li><b>df[col]</b> / <b>df.[[col1, col2,...]]</b> - returns one or more columns from the DataFrame</li>
+      <li><b>df[cond]</b> - returns all the rows that meet the conditional statement</li>
+      <li><b>df.loc[row, col]</b> - returns the specified rows and columns based on their names</li>
+      <li><b>df.iloc[row, col]</b> - returns the specified rows and columns based on index positions</li>
+    </ul>
+    <hr>
+    <h2>Modifying DataFrames</h2>
+    <ul>
+      <li><b>df[new_name]</b> - creates a new column with the given name</li>
+      <li><b>df.pop(col)</b> - drops the column from the DataFrame and returns the dropped column</li>
+      <li><b>df.rename(index=index_mapper, columns=columns_mapper, ...)</b> - rename row labels or column names using the mappers</li>
+    </ul>
+    <hr>
+    <h2>Manipulating Textual Data</h2>
+    <ul>
+      <li><b>Series.str.lower()</b> - turns all characters in the series to lowercase</li>
+      <li><b>Series.str.split(delimiter)</b> - split the values in the column at the specified delimiter string</li>
+      <li><b>Series.str.contains(substr)</b> - checks if each of the value in the Series contains the substring, returning a column of Trues and Falses</li>
+      <li><b>Series.str.replace(original, new)</b> - replaces the original string with the new string</li>
+    </ul>
+    <hr>
+    <h2>Calculating Summary Statistics</h2>
+    <ul>
+      <li><b>df.describe()</b> - calculate aggregating statistics for columns
+        <ul>
+          <li>dividual statistics can also be calculated for columns using functions such as <b>df.mean()</b> or <b>df.median()</b></li>
+        </ul>
+      </li>
+      <li><b>df.agg(func)</b> - allows for specific aggregations of statistics to be defined for given columns</li>
+      <li>Aggregating statistics can also be grouped by category
+        <ul>
+          <li>These types of operations  are supported by the <b>groupby()</b> function, which follows the <b>split-apply-combine</b> pattern</li>
+        </ul>
+      </li>
+      <li><b>Series.value_counts()</b> - counts records for each category in column</li>
+    </ul>
+    <hr>
+    <h2>Combining Data from Multiple Tables</h2>
+    <ul>
+      <li><b>pd.concat([table1, table2...], axis)</b> - performs concatenation operation on multiple tables along one of the axis (row or column)</li>
+      <li><b>pd.merge(table1, table2, how, on)</b> - used for database-like merging and joining of tables</li>
+    </ul>
+    <hr>
+    <h2>Instructional Demo</h2>
+    <p>
+      Using a dataset provided by the pandas website that contains information about passengers aboard the Titanic, we have include a few coding examples of pandas below.
+      If you would like to try our demo, it has been linked at the bottom under "Additional Info"!
+    </p>
+    <p>
+      First, to import the titanic.csv file, we will use the <span>read_csv()</span> function.
+    </p>
+    <code>titanic = pd.read_csv("titanic.csv")</code>
+    <br>
+    <pre>
+         PassengerId  Survived  Pclass  ...     Fare Cabin  Embarked
+    0              1         0       3  ...   7.2500   NaN         S
+    1              2         1       1  ...  71.2833   C85         C
+    2              3         1       3  ...   7.9250   NaN         S
+    3              4         1       1  ...  53.1000  C123         S
+    4              5         0       3  ...   8.0500   NaN         S
+    ..           ...       ...     ...  ...      ...   ...       ...
+    886          887         0       2  ...  13.0000   NaN         S
+    887          888         1       1  ...  30.0000   B42         S
+    888          889         0       3  ...  23.4500   NaN         S
+    889          890         1       1  ...  30.0000  C148         C
+    890          891         0       3  ...   7.7500   NaN         Q
+
+    [891 rows x 12 columns]
+    </pre><br>
+    <p>
+      To display technical information about our dataset, we will use the <span>info()</span> function.
+    </p>
+    <code>titanic.info()</code>
+    <pre>
+    &lt;class 'pandas.core.frame.DataFrame'&gt;
+    RangeIndex: 891 entries, 0 to 890
+    Data columns (total 12 columns):
+     #   Column       Non-Null Count  Dtype
+    ---  ------       --------------  -----
+     0   PassengerId  891 non-null    int64
+     1   Survived     891 non-null    int64
+     2   Pclass       891 non-null    int64
+     3   Name         891 non-null    object
+     4   Sex          891 non-null    object
+     5   Age          714 non-null    float64
+     6   SibSp        891 non-null    int64
+     7   Parch        891 non-null    int64
+     8   Ticket       891 non-null    object
+     9   Fare         891 non-null    float64
+     10  Cabin        204 non-null    object
+     11  Embarked     889 non-null    object
+    dtypes: float64(2), int64(5), object(5)
+    memory usage: 83.7+ KB
+    None
+    </pre><br>
+    <p>
+      Notice the first line printed out by the info() function. It identifies our data as being stored in a DataFrame (df) object.
+      Below is an example of a sample DataFrame object taken from the dataset.
+    </p>
+    <pre>
+                           Name  Age     Sex
+    0   Braund, Mr. Owen Harris   22    male
+    1  Allen, Mr. William Henry   35    male
+    2  Bonnell, Miss. Elizabeth   58  female
+    </pre><br>
+    <p>
+      To rummage through our datasets, we can use the <span>head()</span> and <span>tail()</span> functions.
+    </p>
+    <code>titanic.head(8)</code>
+    <pre>
+       PassengerId  Survived  Pclass  ...     Fare Cabin  Embarked
+    0            1         0       3  ...   7.2500   NaN         S
+    1            2         1       1  ...  71.2833   C85         C
+    2            3         1       3  ...   7.9250   NaN         S
+    3            4         1       1  ...  53.1000  C123         S
+    4            5         0       3  ...   8.0500   NaN         S
+    5            6         0       3  ...   8.4583   NaN         Q
+    6            7         0       1  ...  51.8625   E46         S
+    7            8         0       3  ...  21.0750   NaN         S
+
+    [8 rows x 12 columns]
+    </pre><br>
+    <p>
+      Many different types of data can be stored in a df. We can look at what type of data is stored in each Series (column) using the <span>dtypes</span> attribute of a df.
+    </p>
+    <code>titanic.dtypes</code>
+    <pre>
+    PassengerId      int64
+    Survived         int64
+    Pclass           int64
+    Name            object
+    Sex             object
+    Age            float64
+    SibSp            int64
+    Parch            int64
+    Ticket          object
+    Fare           float64
+    Cabin           object
+    Embarked        object
+    dtype: object
+    </pre><br>
+    <p>
+      Using <span>[ ]</span> or bracket notation, we can select specific columns from the dataset.
+    </p>
+    <code>age_sex = titanic[["Age", "Sex"]]</code>
+    <pre>
+          Age     Sex
+    0    22.0    male
+    1    38.0  female
+    2    26.0  female
+    3    35.0  female
+    4    35.0    male
+    ..    ...     ...
+    886  27.0    male
+    887  19.0  female
+    888   NaN  female
+    889  26.0    male
+    890  32.0    male
+
+    [891 rows x 2 columns]
+    </pre><br>
+    <p>
+      Inside the brackets, we can also include conditionals. For example, if we wanted to select for ages above 35:
+    </p>
+    <code>above_35 = titanic[titanic["Age"] > 35]</code>
+    <pre>
+         PassengerId  Survived  Pclass  ...     Fare Cabin  Embarked
+    1              2         1       1  ...  71.2833   C85         C
+    6              7         0       1  ...  51.8625   E46         S
+    11            12         1       1  ...  26.5500  C103         S
+    13            14         0       3  ...  31.2750   NaN         S
+    15            16         1       2  ...  16.0000   NaN         S
+    ..           ...       ...     ...  ...      ...   ...       ...
+    865          866         1       2  ...  13.0000   NaN         S
+    871          872         1       1  ...  52.5542   D35         S
+    873          874         0       3  ...   9.0000   NaN         S
+    879          880         1       1  ...  83.1583   C50         C
+    885          886         0       3  ...  29.1250   NaN         Q
+
+    [217 rows x 12 columns]
+    </pre><br>
+    <p>
+      Here is another example of placing conditions on our queries, using the <span>isin()</span> function to select for passengers in PClass 2 and 3:
+    </p>
+    <code>class_23 = titanic[titanic["Pclass"].isin([2, 3])]</code>
+    <pre>
+         PassengerId  Survived  Pclass  ...     Fare Cabin  Embarked
+    0              1         0       3  ...   7.2500   NaN         S
+    2              3         1       3  ...   7.9250   NaN         S
+    4              5         0       3  ...   8.0500   NaN         S
+    5              6         0       3  ...   8.4583   NaN         Q
+    7              8         0       3  ...  21.0750   NaN         S
+    ..           ...       ...     ...  ...      ...   ...       ...
+    884          885         0       3  ...   7.0500   NaN         S
+    885          886         0       3  ...  29.1250   NaN         Q
+    886          887         0       2  ...  13.0000   NaN         S
+    888          889         0       3  ...  23.4500   NaN         S
+    890          891         0       3  ...   7.7500   NaN         Q
+
+    [675 rows x 12 columns]
+    </pre><br>
+    <p>
+      pandas also makes it easy for us to isolate the missing values from our data. For instance, we can use <span>isna()</span> to find all the entries with a missing Cabin value:
+    </p>
+    <code>cabin_unknown = titanic[titanic["Cabin"].isna()]</code>
+    <pre>
+          PassengerId  Survived  Pclass  ...     Fare Cabin  Embarked
+     0              1         0       3  ...   7.2500   NaN         S
+     2              3         1       3  ...   7.9250   NaN         S
+     4              5         0       3  ...   8.0500   NaN         S
+     5              6         0       3  ...   8.4583   NaN         Q
+     7              8         0       3  ...  21.0750   NaN         S
+     ..           ...       ...     ...  ...      ...   ...       ...
+     884          885         0       3  ...   7.0500   NaN         S
+     885          886         0       3  ...  29.1250   NaN         Q
+     886          887         0       2  ...  13.0000   NaN         S
+     888          889         0       3  ...  23.4500   NaN         S
+     890          891         0       3  ...   7.7500   NaN         Q
+
+     [687 rows x 12 columns]
+    </pre><br>
+    <p>
+      What if we only wanted to see the names of the people whose ages are unknown? We can do that using the <span>loc()</span> function:
+    </p>
+    <code>titanic.loc[titanic["Age"].isna(), "Name"]</code>
+    <pre>
+    5                              Moran, Mr. James
+    17                 Williams, Mr. Charles Eugene
+    19                      Masselmani, Mrs. Fatima
+    26                      Emir, Mr. Farred Chehab
+    28                O'Dwyer, Miss. Ellen "Nellie"
+                             ...
+    859                            Razi, Mr. Raihed
+    863           Sage, Miss. Dorothy Edith "Dolly"
+    868                 van Melkebeke, Mr. Philemon
+    878                          Laleff, Mr. Kristo
+    888    Johnston, Miss. Catherine Helen "Carrie"
+    Name: Name, Length: 177, dtype: object
+    </pre><br>
+    <p>
+      Now if we just want to focus on the ages of the people, we can use <span>describe()</span> to manipulate the numbers:
+    </p>
+    <code>titanic["Age"].describe()</code>
+    <pre>
+    count    714.000000
+    mean      29.699118
+    std       14.526497
+    min        0.420000
+    25%       20.125000
+    50%       28.000000
+    75%       38.000000
+    max       80.000000
+    Name: Age, dtype: float64
+    </pre><br>
+    <p>
+      To add up the values of two tables into the same column, we can use <span>concat()</span>:
+    </p>
+    <code>s1 = pd.Series(['a', 'b'])</code>
+    <pre>
+    0    a
+    1    b
+    dtype: object
+    </pre><br>
+    <code>s2 = pd.Series(['c', 'd'])</code>
+    <pre>
+    0    c
+    1    d
+    dtype: object
+    </pre><br>
+    <code>s3 = pd.concat([s1, s2])</code>
+    <pre>
+    0    a
+    1    b
+    0    c
+    1    d
+    dtype: object
+    </pre><br>
+    <p>
+      To combine the columns of two tables, we can use <span>merge()</span> to merge one table to the left of the other:
+    </p>
+    <code>df1 = pd.DataFrame({'lkey': ['foo', 'bar', 'baz', 'foo'], 'value': [1, 2, 3, 5]})</code>
+    <pre>
+      lkey  value
+    0  foo      1
+    1  bar      2
+    2  baz      3
+    3  foo      5
+    </pre>
+    <code>df2 = pd.DataFrame({'rkey': ['foo', 'bar', 'baz', 'foo'], 'value': [5, 6, 7, 8]})</code>
+    <pre>
+      rkey  value
+    0  foo      5
+    1  bar      6
+    2  baz      7
+    3  foo      8
+    </pre>
+    <code>df3 = df1.merge(df2, left_on='lkey', right_on='rkey')</code>
+    <pre>
+      lkey  value_x rkey  value_y
+    0  foo        1  foo        5
+    1  foo        1  foo        8
+    2  foo        5  foo        5
+    3  foo        5  foo        8
+    4  bar        2  bar        6
+    5  baz        3  baz        7
+    </pre>
+    <hr>
+    <h2>Additional Info</h2>
+    <ul>
+      <li>If you are looking to explore pandas on your own, get started at the following link:
+        <ul>
+          <li><a href="https://pandas.pydata.org/docs/getting_started/install.html">https://pandas.pydata.org/docs/getting_started/install.html</a></li>
+          <li>Inside your python file, you should include the following line at the top:
+            <ul>
+              <li><b>import pandas as pd</b></li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li>You can also try exploring out instructional code demo, which you can find at the following link (instructions provided in README file):
+        <ul>
+          <li><a href="https://github.com/phuang00/pandas">https://github.com/phuang00/pandas</a></li>
+        </ul>
+      </li>
+    </ul>
+  </body>
+</html>
