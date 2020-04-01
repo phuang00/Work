@@ -1,0 +1,21 @@
+1
+ - When you click on a cell, an alert box pops up with the td's innerHTML
+
+2
+ - When you click on a cell, the cell content pops up first but then it
+   traces itself back in the DOM so alerts happen in this fashion:
+     td's innerHTML, tr's innerHTML, table's innerHTML
+
+3
+ - The true parameter in table.addEventListener makes that event listener
+   happen first before any other event listeners beneath it in the DOM
+   so the order becomes:
+     table's innerHTML, td's innerHTML, tr's innerHTML
+ - When the line is uncommented, only the table innerHTML will pop-up and not
+  the trs or cell innerHTML since that's the first alert and propogation ends
+  after it
+
+4
+ - The order in which the event listeners are attached does not matter
+   because it's based on the DOM so it goes by:
+     table's innerHTML, tr's innerHTML, td's innerHTML
