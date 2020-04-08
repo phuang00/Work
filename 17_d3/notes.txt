@@ -1,0 +1,13 @@
+Transition Code:
+- when running the D3 transition code, a UR prototype is returned
+- what is the default duration of transitions in D3?
+
+Let's Mark a Bar Chart (Part I):
+- noted indentation conventions and chaining method
+- noted used of scaleLinear() in place of function(d)
+
+Learn By Example (Observable HQ):
+- can import examples and substitute values in examples with your own data
+- noted use of with clause in import statements
+- can customize appearance of x-axis and y-axis
+- what does it mean to fix the domain?
