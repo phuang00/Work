@@ -17,7 +17,7 @@ app = Flask(__name__)
 
 @app.route("/")
 def root():
-    return render_template('index.html', data=parse.parse_json())
+    return render_template('index.html', datas=parse.parse_json())
 
 if __name__ == "__main__":
     app.debug = True
