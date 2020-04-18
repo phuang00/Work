@@ -2,13 +2,24 @@
 <html>
 	<head>
 		<title>
-			-|- My Foist Webpage
+			China's GDP: Over the Years
 		</title>
+		<link rel="stylesheet" type="text/css" href="../static/styles/main.css">
 	</head>
 	<body>
-		<button id="render">Render</button>
+		<h3 id="prname">D3xSoftDev</h3>
+		<h1>China's GDP: Over the Years</h1>
+		<h3 id="byname">Jackie Lin and Peihua Huang (Team Har Gow Siu Mai)</h3>
+		<br>
 		<div id="line1">
 		</div>
+		<button id="render">Render</button>
+		<button id="transition">Transition</button>
+		<p id="desc">
+			The China GDP dataset follows the value of China's GDP in current US$ from the year 1960 to 2018. <br>
+			Click the Render button to show a line graph of China's GDP from 1960 to 1978.<br>
+			Click the Transition button to show years 1978 to 1998. Click it once more to show years 1998 to 2018.
+		</p>
 		<script src="https://d3js.org/d3.v4.js"></script>
 		<script type="text/javascript">
     	var datas = {{ datas|tojson }}
